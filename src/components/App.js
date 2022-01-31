@@ -70,18 +70,21 @@ function App() {
             displayName="HTML"
             value={html}
             onChange={setHtml}
+            fileType="html"
           />
           <Editor
             language="css"
             displayName="CSS"
             value={css}
             onChange={setCss}
+            fileType="css"
           />
           <Editor
             language="javascript"
             displayName="JS"
             value={js}
             onChange={setJs}
+            fileType="js"
           />
         </div>
         <div className="pane">

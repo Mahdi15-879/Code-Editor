@@ -73,6 +73,13 @@ body {
   background-color: hsl(225, 6%, 25%);
 }
 
+.Download {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
 .editor-container.collapsed {
   flex-grow: 0;
 }
