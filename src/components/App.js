@@ -11,6 +11,7 @@ function App() {
   const [js, setJs] = useLocalStorage("js", "");
   const [srcDoc, setSrcDoc] = useState("");
   const [progress, setProgress] = useState(0);
+  const [fileName, setFileName] = useState("");
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -85,6 +86,37 @@ function App() {
     reader.readAsText(file);
   };
 
+  const createFileHandler = () => {
+    if (fileName.includes(".html")) {
+      let newFile = new File(["Hello World!"], `${fileName}`, {
+        type: "html/plain;charset=utf-8",
+      });
+      let reader = new FileReader();
+      reader.readAsText(newFile);
+      reader.onload = () => {
+        setHtml(reader.result);
+      };
+    } else if (fileName.includes(".css")) {
+      let newFile = new File(["Hello World!"], `${fileName}`, {
+        type: "css/plain;charset=utf-8",
+      });
+      let reader = new FileReader();
+      reader.readAsText(newFile);
+      reader.onload = () => {
+        setCss(reader.result);
+      };
+    } else if (fileName.includes(".js")) {
+      let newFile = new File(["Hello World!"], `${fileName}`, {
+        type: "js/plain;charset=utf-8",
+      });
+      let reader = new FileReader();
+      reader.readAsText(newFile);
+      reader.onload = () => {
+        setJs(reader.result);
+      };
+    }
+  };
+
   return (
     <div className="App">
       <div v className="row-top">
@@ -101,6 +133,17 @@ function App() {
             <button type="submit">Upload</button>
           </form>
           <h3>Uploaded {progress} %</h3>
+
+          <div className="fileCreator">
+            <input
+              type="text"
+              onChange={(e) => {
+                setFileName(e.target.value);
+              }}
+              placeholder="Enter a name with(.Suffix)"
+            />
+            <button onClick={createFileHandler}>Create</button>
+          </div>
         </div>
         <div className="pane top-pane col-right">
           <Editor
@@ -109,6 +152,7 @@ function App() {
             value={html}
             onChange={setHtml}
             fileType="html"
+            fileName={fileName.split(".")[0]}
           />
           <Editor
             language="css"
@@ -116,6 +160,7 @@ function App() {
             value={css}
             onChange={setCss}
             fileType="css"
+            fileName={fileName.split(".")[0]}
           />
           <Editor
             language="javascript"
@@ -123,6 +168,7 @@ function App() {
             value={js}
             onChange={setJs}
             fileType="js"
+            fileName={fileName.split(".")[0]}
           />
         </div>
       </div>

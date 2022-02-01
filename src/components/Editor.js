@@ -13,7 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Editor = (props) => {
-  const { displayName, language, value, onChange, fileType } = props;
+  const { displayName, language, value, onChange, fileType, fileName } = props;
 
   const [open, setOpen] = useState(true);
 
@@ -28,7 +28,7 @@ const Editor = (props) => {
     });
 
     element.href = URL.createObjectURL(file);
-    element.download = `NewDocument.${fileType}`;
+    element.download = `${fileName ? fileName : "NewDocument"}.${fileType}`;
     document.body.appendChild(element);
     element.click();
   };

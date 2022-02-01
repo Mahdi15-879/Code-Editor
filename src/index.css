@@ -60,6 +60,37 @@ body {
   border-color: #fff;
 }
 
+.col-left h3 {
+  border-bottom: 1px solid rgba(192, 183, 183, 0.781);
+  width: 90%;
+  margin: auto;
+  padding-bottom: 1rem;
+}
+
+.fileCreator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 2rem;
+}
+
+.fileCreator input {
+  border: none;
+  margin-top: 1.5rem;
+  width: 12rem;
+  height: 2rem;
+  text-align: center;
+  background-color: transparent;
+  border: 1px solid rgba(192, 183, 183, 0.781);
+  border-radius: 5px;
+  font-size: 1rem;
+  color: rgb(236, 232, 232);
+}
+
+.fileCreator input:focus {
+  outline: none;
+}
+
 .col-right {
   width: 80%;
   height: 100%;
